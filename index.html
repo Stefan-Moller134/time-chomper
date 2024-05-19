@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Time Chomper</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous"></link>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,400&amp;display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <nav>
+        <div id="logo">
+            <img src="img/time-chomper-logo.jpeg">
+            <h2>Time Chomper</h2>
+        </div>
+        <ul>
+            <li><a href="#">###</a></li>
+            <li><a href="#">###</a></li>
+            <li><a href="#">###</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div id="chomps-col">
+            <div class="main-row"> 
+                <div class="main-input-container"><input type="text" placeholder="What task will you feed Chompie?" id="main-input"></div>
+                <div class="action-container">
+                    <div id="display">00:00:00</div>
+                    <div><button id="startStop" onclick="startStop()">START</button></div>
+                </div>
+            </div>
+            <h1 id="hungry">Chompy is hungry...</h1>
+            <div id="entries-container"></div>
+            
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
