@@ -23,13 +23,22 @@
             <div class="main-row"> 
                 <div class="main-input-container"><input type="text" placeholder="What task will you feed Chompie?" id="main-input"></div>
                 <div class="action-container">
-                    <div id="display">00:00:00</div>
+                    <div id="timeDisplay">00:00:00</div>
                     <div><button id="startStop" onclick="startStop()">START</button></div>
                 </div>
             </div>
-            <h1 id="hungry">Chompy is hungry...</h1>
-            <div id="entries-container"></div>
-            
+            <h1 id="chompyIsHungry">Chompy is hungry...</h1>
+            <div id="entries-container">
+                <template id="entryTemplate">
+                    <div class="entry-row"> 
+                        <div class="entry-text">${entry.title}</div>
+                        <div class="action-container">
+                            <div class="entry-time">${entry.time}</div>
+                            <button class="delete-btn" value="${entry.id}">Delete</button>
+                        </div>
+                    </div>
+                </template>
+            </div>
         </div>
     </main>
 
