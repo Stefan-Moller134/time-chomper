@@ -1,7 +1,8 @@
 class Entry {
     static id = 0;
-    constructor(title, time) {
+    constructor(date, title, time) {
         this.id = Entry.id++;
+        this.date = date
         this.title = title;
         this.time = time;
     }
@@ -19,6 +20,7 @@ function deleteEntry(id) {
 
 
 const textInput = document.getElementById('main-input');
+const currentDateTime = document.getElementById('currentDateTime');
 const entryItem = document.querySelector('.entry-item');
 const deleteBtn = document.querySelector('.delete-btn');
 const stopStartBtn= document.getElementById('startStop');
@@ -86,24 +88,33 @@ function startStop() {
     }
 }
 
+    function showDateTime() {
+        var now = new Date();
+        var dateTimeString = now.toLocaleString();
+        document.getElementById('currentDateTime').textContent = dateTimeString;
+    }
+    showDateTime();
+    setInterval(showDateTime, 1000); // Update the date and time every second
+
 // Adds entry to the list
+
 function addEntry() {
-   
     if (stopWatchStatus === 'started') return;
 
     if (stopWatchStatus === 'stopped') {
-
-        const entry = new Entry(textInput.value, timeDisplay.innerHTML);
+        const entry = new Entry(currentDateTime.textContent, textInput.value, timeDisplay.innerHTML);
 
         if (entry.title === '') return alert('Please enter a byte!');
 
         const clone = entryTemplate.content.cloneNode(true);
     
         const title = clone.querySelector('.entry-text');
+        const dateElement = clone.querySelector('.entry-date');
         const time = clone.querySelector('.entry-time');
         const deleteBtn = clone.querySelector('.delete-btn');
         
         title.textContent = entry.title;
+        dateElement.textContent = entry.date;
         time.textContent = entry.time;
         deleteBtn.value = entry.id;
 
@@ -118,7 +129,6 @@ function addEntry() {
         console.log(entries);
     }
 }
-
 
 stopStartBtn.addEventListener('click', addEntry);
 
@@ -152,10 +162,12 @@ window.addEventListener('load', function() {
             const clone = entryTemplate.content.cloneNode(true);
     
             const elTitle = clone.querySelector('.entry-text');
+            const elDate = clone.querySelector('.entry-date');
             const elTime = clone.querySelector('.entry-time');
             const elDeleteBtn = clone.querySelector('.delete-btn');
             
             elTitle.textContent = entry.title;
+            elDate.textContent = entry.date;
             elTime.textContent = entry.time;
             elDeleteBtn.value = entry.id;
 

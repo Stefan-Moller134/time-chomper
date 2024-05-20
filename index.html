@@ -23,6 +23,7 @@
             <div class="main-row"> 
                 <div class="main-input-container"><input type="text" placeholder="What task will you feed Chompie?" id="main-input"></div>
                 <div class="action-container">
+                    <div id="currentDateTime"></div>
                     <div id="timeDisplay">00:00:00</div>
                     <div><button id="startStop" onclick="startStop()">START</button></div>
                 </div>
@@ -33,6 +34,7 @@
                     <div class="entry-row"> 
                         <div class="entry-text">${entry.title}</div>
                         <div class="action-container">
+                            <div class="entry-date"></div>
                             <div class="entry-time">${entry.time}</div>
                             <button class="delete-btn" value="${entry.id}">Delete</button>
                         </div>
