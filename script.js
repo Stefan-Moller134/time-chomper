@@ -125,10 +125,51 @@ function addEntry() {
         chompyIsHungry.style.display = 'none';
 
         entries.push(entry);
+        feedChompy();
 
         console.log(entries);
     }
 }
+
+const hunger = document.getElementById('hunger-line');
+const hungerText = document.getElementById('hunger-text');
+
+function feedChompy() {
+  // Calculate total hours from all entries
+  let totalHours = entries.reduce((total, entry) => {
+      let [hours, minutes, seconds] = entry.time.split(':').map(Number);
+      return total + hours + minutes / 60 + seconds / 3600;
+  }, 0);
+
+  // Don't increase width after the total exceeds 8 hours
+  totalHours = Math.min(totalHours, 8);
+
+  // Calculate width as a percentage of total hours to 8 hours
+  let widthHours = ((totalHours / 8) * 100) * 10;
+
+  // Calculate width based on the amount of entries, with a maximum of 100 entries
+  let widthEntries = Math.min(entries.length, 100) * 25;
+
+  // Calculate the final width as the average of widthHours and widthEntries
+  let width = (widthHours + widthEntries) / 2;
+
+  hunger.style.width = width + '%';
+
+  // Change the color of the hunger line based on the width
+  if (width < 50) {
+      hunger.style.backgroundColor = 'red';
+      hungerText.textContent = 'Starving!';
+  } else if (width < 75) {
+      hunger.style.backgroundColor = 'orange';
+      hungerText.textContent = 'Hungry!';
+  } else {
+      hunger.style.backgroundColor = 'green';
+      hungerText.textContent = 'Happy!';
+  }
+}
+
+
+
 
 stopStartBtn.addEventListener('click', addEntry);
 
@@ -146,7 +187,6 @@ entriesList.addEventListener('click', function(event) {
         console.log(entries);
     };
 });
-
 
 // Save entries to local storage
 window.addEventListener('beforeunload', function() {
