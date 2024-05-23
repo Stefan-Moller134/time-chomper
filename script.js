@@ -185,6 +185,7 @@ entriesList.addEventListener('click', function(event) {
         const entityId = parseInt(deleteButton.value);
         deleteEntry(entityId);
         console.log(entries);
+        feedChompy();
     };
 });
 
