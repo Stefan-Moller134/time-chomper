@@ -17,6 +17,17 @@ html, body {
     padding: 0;
 }
 
+@keyframes slideOut {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+  }
+
 /* Global styles */
 body {
     font-family: Poppins, sans-serif;
@@ -73,6 +84,11 @@ nav h2 {
     color: #ffffff;
 }
 
+#hunger-container {
+    position: relative;
+    bottom: 100px;
+}
+
 #hunger-bar {
     margin: 0.5rem 0;
     height: 1rem;
@@ -121,7 +137,7 @@ main {
 main .chomps-col {
     display: flex;
     flex-direction: column;
-    max-width: 100px ;
+    max-width: 100px;
     gap: 1rem;
     height: 100vh;
 }
@@ -133,6 +149,17 @@ main .main-row {
     padding: 1rem;
     width: 100%;
     background-color: var(--color-light);
+}
+
+.main-row .gif-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-row img {
+    width: 50px;
+    height: 50px;
 }
 
 .main-row .action-container {
@@ -147,7 +174,9 @@ main .main-row {
     border-radius: 0.25rem;
 }
 
-.main-row input:active, .main-row input:hover, .main-row input:focus {
+.main-row input:active,
+.main-row input:hover,
+.main-row input:focus {
     border: 2px solid var(--color-primary);
 }
 
@@ -156,7 +185,6 @@ main .main-row {
     color: var(--color-less-dark);
     width: 10rem;
     padding: 0;
-
 }
 
 main .entry-row {
@@ -168,6 +196,7 @@ main .entry-row {
     width: 100%;
     background-color: var(--color-light);
 }
+
 /* Entries */
 .entry-row .action-container {
     display: flex;
@@ -185,10 +214,7 @@ main .entry-row {
     color: var(--color-less-dark);
     width: 10rem;
     padding: 0;
-
 }
-
-
 
 
 /* Media Queries */
@@ -199,6 +225,12 @@ main .entry-row {
         width: 100vw;
         height: 15vh;
         padding: 0;
+    }
+
+    #logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     nav img {
@@ -220,6 +252,11 @@ main .entry-row {
 
     nav a {
         font-size: 1rem;
+    }
+
+    #hunger-container {
+        top: 0;
+        bottom: 0;
     }
 
     main {

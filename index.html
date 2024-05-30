@@ -1,55 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Time Chomper</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous"></link>
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,400&amp;display=swap" rel="stylesheet"> 
-    <link rel="stylesheet" type="text/css" href="styles.css">
+  <title>Time Chomper</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,400&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-    <nav>
-        <div id="logo">
-            <img src="img/time-chomper-logo.jpeg">
-            <h2>Time Chomper</h2>
+  <nav>
+    <div id="logo">
+      <img src="img/pixel-chomp.png">
+      <h2>Time Chomper</h2>
+    </div>
+    <div id="hunger-container">
+      <div id="hunger-bar">
+        <div id="hunger-line"></div>
+      </div>
+      <div id="hunger-text">Starving!</div>
+    </div>
+    <ul>
+      <li><a href="#"></a></li>
+      <li><a href="#"></a></li>
+    </ul>
+  </nav>
+  <main>
+    <div id="chomps-col">
+      <div class="main-row">
+        <div class="main-input-container">
+          <input type="text" placeholder="What task will you feed Chompie?" id="main-input">
         </div>
-        <div id="hunger-container">
-            <div id="hunger-bar">
-                <div id="hunger-line"></div>
+        <div class="gif-container"><img src="img/chompy.gif"></div>
+        <div class="action-container">
+          <div id="currentDateTime"></div>
+          <div id="timeDisplay">00:00:00</div>
+          <div><button id="startStop" onclick="startStop()">START</button></div>
+        </div>
+      </div>
+      <h1 id="chompyIsHungry">Chompy is hungry :3</h1>
+      <div id="entries-container">
+        <template id="entryTemplate">
+          <div class="entry-row">
+            <div class="entry-text">${entry.title}</div>
+            <div class="action-container">
+              <div class="entry-date"></div>
+              <div class="entry-time">${entry.time}</div>
+              <button class="delete-btn" value="${entry.id}">Delete</button>
             </div>
-            <div id="hunger-text">Starving!</div>
+          </div>
+        </template>
+      </div>
+    </div>
+  </main>
 
-        </div>
-        <ul>
-            <li><a href="#">###</a></li>
-            <li><a href="#">###</a></li>
-        </ul>
-    </nav>
-    <main>
-        <div id="chomps-col">
-            <div class="main-row"> 
-                <div class="main-input-container"><input type="text" placeholder="What task will you feed Chompie?" id="main-input"></div>
-                <div class="action-container">
-                    <div id="currentDateTime"></div>
-                    <div id="timeDisplay">00:00:00</div>
-                    <div><button id="startStop" onclick="startStop()">START</button></div>
-                </div>
-            </div>
-            <h1 id="chompyIsHungry">Chompy is hungry...</h1>
-            <div id="entries-container">
-                <template id="entryTemplate">
-                    <div class="entry-row"> 
-                        <div class="entry-text">${entry.title}</div>
-                        <div class="action-container">
-                            <div class="entry-date"></div>
-                            <div class="entry-time">${entry.time}</div>
-                            <button class="delete-btn" value="${entry.id}">Delete</button>
-                        </div>
-                    </div>
-                </template>
-            </div>
-        </div>
-    </main>
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
