@@ -27,6 +27,7 @@ const entriesList = document.getElementById('entries-container');
 const chompyIsHungry = document.getElementById('chompyIsHungry');
 const timeDisplay = document.getElementById('timeDisplay');
 const entryTemplate = document.getElementById('entryTemplate');
+const totalTime = document.getElementById('totalTime');
 const entries = [];
 
 // stop watch
@@ -94,6 +95,25 @@ function showDateTime() {
 showDateTime();
 setInterval(showDateTime, 1000); // Update the date and time every second
 
+function calculateTotalTime() {
+  let totalSeconds = entries.reduce((total, entry) => {
+    let [hours, minutes, seconds] = entry.time.split(':').map(Number);
+    return total + hours * 3600 + minutes * 60 + seconds;
+  }, 0);
+
+  let hours = Math.floor(totalSeconds / 3600);
+  let minutes = Math.floor((totalSeconds % 3600) / 60);
+  let seconds = Math.floor(totalSeconds % 60);
+
+  // Pad the minutes and seconds with leading zeros, if required
+  hours = hours < 10 ? '0' + hours : hours;
+  minutes = minutes < 10 ? '0' + minutes : minutes;
+  seconds = seconds < 10 ? '0' + seconds : seconds;
+
+  // Display the total time in the format HH:MM:SS
+  totalTime.textContent = `${hours}:${minutes}:${seconds}`;
+}
+
 // Adds entry to the list
 function addEntry() {
   if (stopWatchStatus === 'started') return;
@@ -123,6 +143,7 @@ function addEntry() {
 
     entries.push(entry);
     feedChompy();
+    calculateTotalTime();
 
     console.log(entries);
   }
@@ -185,6 +206,7 @@ entriesList.addEventListener('click', function(event) {
     deleteEntry(entityId);
     console.log(entries);
     feedChompy();
+    calculateTotalTime();
   }
 });
 
